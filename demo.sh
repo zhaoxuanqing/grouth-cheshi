@@ -1,10 +1,17 @@
 input="/grouth-cheshi/.git/index"
+output=$(git pull)
 
-
-cd $input
+cd "$input"
 echo "===== Git pull..."
-if git pull; then
-  echo "更新了"
+if [[ $output == *"Already up to date."* ]]; then
+  echo "没有文件更改。"
 else
-  echo "没有更新"
+  echo "文件已更改。"
 fi
+
+
+
+# 执行git pull命令，并将输出保存到变量中
+
+
+# 判断输出中是否包含 "Already up to date." 的消息
